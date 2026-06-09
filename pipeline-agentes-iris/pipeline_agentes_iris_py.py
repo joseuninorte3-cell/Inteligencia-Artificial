@@ -39,7 +39,7 @@ print(df.head())
 print("\nFaltantes:\n", df.isnull().sum())
 print("\nEspecies a predecir:", y.unique())
 
-"""### **Normalizar Dataset**"""
+"""### **Normalizar Dataset (limpia y prepara los datos)**"""
 
 def agente_normalizador(X):
     num = X.select_dtypes(include=np.number).columns.tolist()
@@ -64,7 +64,7 @@ print("Dataset limpio listo.")
 print("Numéricas:", num)
 print("Categóricas:", cat)
 
-"""### **Entrenador**"""
+"""### **Entrenador(Entrena al modelo para que pueda aprender bien)**"""
 
 def agente_entrenador(preprocesador, X, y):
     X_tr, X_te, y_tr, y_te = train_test_split(
@@ -97,7 +97,7 @@ def agente_entrenador(preprocesador, X, y):
 modelo_final, metricas = agente_entrenador(preprocesador, X, y)
 print("\n Métricas + modelo:", metricas)
 
-"""### **Comunicador**"""
+"""### **Comunicador(convierte los resultados en respiestas+ faciles de leer)**"""
 
 def agente_comunicador(metricas):
     desempeno = "sólido" if metricas["f1_test"] > 0.8 else "aceptable"
